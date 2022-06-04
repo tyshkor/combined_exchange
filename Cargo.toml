@@ -1,0 +1,27 @@
+[package]
+name = "combined_exchange"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tonic = "0.7.1"
+tokio = { version = "1.18.0", features = [ "rt-multi-thread", "time", "fs", "macros", "net",] }
+prost = "0.10.1"
+tokio-stream = "0.1.8"
+tokio-tungstenite = { version = "0.17.1", features = ["native-tls"] }
+url = "2.0.0"
+futures-channel = "0.3"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+serde_json = "1.0.79"
+serde = { version = "1.0.136", features = ["derive"] }
+serde-aux = "3.0.1"
+
+
+[build-dependencies]
+tonic-build = "0.7.1"
+
+[[bin]]
+name = "orderbook-aggregator-server"
+path = "src/server.rs"
